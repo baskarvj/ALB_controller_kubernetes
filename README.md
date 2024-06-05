@@ -57,15 +57,23 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: my-alb-group  #Use this to share ALB among multiple ingresses. #CostEffective
+    alb.ingress.kubernetes.io/load-balancer-name: my-alb  # give ALB a meaningfull name otherwise a random name is assigned by AWS.
     alb.ingress.kubernetes.io/certificate-arn: <cert_arn>
-    alb.ingress.kubernetes.io/subnets: subnet-0e1b5b8740e23a5, subnet-0374e6893583e31d3, subnet-09992e9f115a63377, subnet-039b9704beab48abb, subnet-0f64f8e7e003a041a, subnet-0142777dc45ef9325
+    alb.ingress.kubernetes.io/subnets: subnet-0e1b5b8740e23d44a5, subnet-0374e693583e43421d3, subnet-09912e9f115a463377, subnet-03b9bv704be4ab48abb, subnet-0f34f48e7e003a041a, subnet-0142077dc45ef94325
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+
 spec:
   ingressClassName: alb
   tls:
   - hosts:
     - eks.baskeytech.cloud
+  defaultBackend:
+    service:
+      name: my-service
+      port:
+        number: 80
   rules:
     - host: eks.baskeytech.cloud
       http:
