@@ -57,15 +57,15 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:384834573830:certificate/754cac9d-d032-442f-a85c-e8123ed6af53
-    alb.ingress.kubernetes.io/subnets: subnet-0e1b5b8740e23d4a5, subnet-0374e693583e321d3, subnet-09912e9f115a63377, subnet-03b9b704beab48abb, subnet-0f34f8e7e003a041a, subnet-0142077dc45ef9325
+    alb.ingress.kubernetes.io/certificate-arn: <cert_arn>
+    alb.ingress.kubernetes.io/subnets: subnet-0e1b5b8740e23a5, subnet-0374e6893583e31d3, subnet-09992e9f115a63377, subnet-039b9704beab48abb, subnet-0f64f8e7e003a041a, subnet-0142777dc45ef9325
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
     alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
 spec:
   ingressClassName: alb
   tls:
   - hosts:
-    - checking.whizlabs.org
+    - eks.baskeytech.cloud
   rules:
     - host: eks.baskeytech.cloud
       http:
