@@ -89,4 +89,6 @@ kubectl get ing
 ~~~
 elasticloadbalancing:AddTags
 ~~~
+![image](https://github.com/baskarvj/ALB_controller_kubernetes/assets/103120325/1d18452f-2291-4d77-ab22-31cd0c8f9716)
+
 
